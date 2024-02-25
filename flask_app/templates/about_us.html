@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #020202;
+        }
+        
+        .navbar {
+            background-color: transparent;
+            /* Black navbar */
+            z-index: 2;
+            /* Ensure the navbar is on top */
+            padding-right: 40px;
+            /* Adjust padding */
+            padding-left: 40px;
+            /* Adjust padding */
+            height: 80px;
+            font-size: 18px;
+            /* Adjust font size */
+            font-family: Arial, sans-serif;
+            /* Change font family */
+        }
+        
+        .navbar .form-inline {
+            display: none;
+            /* Hide the search form */
+        }
+        
+        .navbar-toggler {
+            margin-right: 0;
+            /* Remove margin */
+        }
+        
+        .navbar .navbar-nav .nav-link {
+            margin-right: 30px;
+            /* Adjust margin */
+            color: #ffffff;
+            /* Change font color */
+            font-family: 'Times New Roman', Times, serif;
+            /* Add font weight */
+        }
+        
+        .navbar .navbar-nav .nav-link:last-child {
+            margin-right: 10;
+            /* Remove margin for the last link */
+        }
+        
+        .navbar .navbar-nav .nav-item.donate {
+            margin-left: auto;
+            /* Push donate button to the right */
+        }
+        
+        .navbar .navbar-nav .nav-item.donate .nav-link {
+            background-color: #1414f7;
+            /* Change button background color */
+            color: #ffffff;
+            /* Change button font color */
+            padding: 7px 15px;
+            /* Adjust button padding */
+            border-radius: 5px;
+            /* Add border radius */
+            font-weight: bold;
+            /* Add font weight */
+        }
+        
+        .navbar .navbar-nav .nav-item.donate .nav-link:hover {
+            background-color: #c919a3;
+            /* Change button background color on hover */
+        }
+        
+        .footer {
+            background-color: #000000;
+            font-family: 'Times New Roman', Times, serif;
+            color: #fff;
+            padding: 120px 0;
+        }
+        
+        .container_footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .footer h2 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul,
+        .additional-links ul,
+        .other-links ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-links ul li,
+        .additional-links ul li,
+        .other-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a,
+        .additional-links ul li a,
+        .other-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 3px;
+            font-size: 12px;
+        }
+        
+        .footer-links ul li a:hover,
+        .additional-links ul li a:hover,
+        .other-links ul li a:hover {
+            color: #ccc;
+        }
+        
+        .copyright {
+            text-align: center;
+        }
+        
+        .copyright p {
+            color: #e0e1ea;
+        }
+        
+        .about-content {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            text-align: justify;
+            color: #ffffff;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .about-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fcfcfc;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .about-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .about-highlight {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+        }
+        /* Custom styling for the content */
+        
+        .about-content {
+            background-color: transparent;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <h1 style="color: rgba(251, 251, 110, 0.827); font-weight: bold; margin-right: 30px;"><span style="color: white">for</span>People</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">About Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">{% if 'user_id' not in session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item donate">
+                        <a class="nav-link" href="/donations">Donate</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Us Content -->
+    <div class="container">
+        <div class="about-content">
+            <h2 class="about-title">About Our Mission</h2>
+            <p class="about-text">At Nature's Helping Hands Initiative, we are dedicated to making a positive impact on our planet and the communities we serve. Our mission is to bridge communities and preserve nature through collaborative efforts and sustainable practices.</p>
+            <p class="about-text">We believe in the power of collective action and the importance of protecting our environment for future generations. Through our initiatives, we aim to address pressing environmental issues, promote social justice, and foster a sense of unity
+                among individuals from diverse backgrounds.</p>
+            <p class="about-text">Our team is composed of passionate individuals who are committed to creating meaningful change. From organizing community clean-up events to supporting local conservation projects, we strive to make a difference in the world around us.</p>
+            <p class="about-text">Join us in our journey to build a better, more sustainable future for all. Together, we can make a lasting impact and leave a positive legacy for generations to come.</p>
+            <p class="about-text">Thank you for your support!</p>
+            <p class="about-highlight">Together, we can make a difference.</p>
+        </div>
+        <footer class="footer ">
+            <div class="container_footer ">
+                <div class="footer-links ">
+                    <h2>QUICK LINKS</h2>
+                    <ul>
+                        <li><a href="# ">About Us</a></li>
+                        <li><a href="# ">Contact Us</a></li>
+                        <li><a href="# ">Our Partners</a></li>
+                        <li><a href="# ">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="additional-links ">
+                    <h2>LEGALS</h2>
+                    <ul>
+                        <li><a href="# ">Terms of Service</a></li>
+                        <li><a href="# ">Cookie Policy</a></li>
+                        <li><a href="# ">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="other-links ">
+                    <h2>SUPPORT</h2>
+                    <ul>
+                        <li><a href="# ">Blog</a></li>
+                        <li><a href="# ">Careers</a></li>
+                        <li><a href="# ">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright ">
+                <p>&copy; 2024 forPeople. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeless Category</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        nav li {
+            margin: 0 20px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ccc;
+        }
+        
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .hero h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .stories {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .story {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            width: calc(33.33% - 20px);
+            box-sizing: border-box;
+        }
+        
+        .story h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .story p {
+            color: #666;
+        }
+        
+        .take-action {
+            margin-top: 40px;
+        }
+        
+        .take-action h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .take-action p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .take-action button {
+            background-color: #e8491d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="homeless_picture.jpg" alt="Homeless Picture">
+            <h1>Stories of Hope</h1>
+        </section>
+
+
+        <section class="take-action">
+            <h2>Take Action</h2>
+            <p>Help to make a difference in their lives.</p>
+            <button >Donate Now</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 forPeople. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

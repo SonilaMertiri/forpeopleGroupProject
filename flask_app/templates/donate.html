@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('../static/images/paypal.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #ffffff;
+            /* Text color */
+        }
+        
+        .navbar {
+            background-color: #000000;
+            border-bottom: 1px solid silver;
+        }
+        
+        .navbar {
+            background-color: black;
+            /* Black navbar */
+            z-index: 2;
+            /* Ensure the navbar is on top */
+            padding-right: 40px;
+            /* Adjust padding */
+            padding-left: 40px;
+            /* Adjust padding */
+            height: 80px;
+            font-size: 18px;
+            /* Adjust font size */
+            font-family: Arial, sans-serif;
+            /* Change font family */
+        }
+        
+        .navbar .form-inline {
+            display: none;
+            /* Hide the search form */
+        }
+        
+        .navbar-toggler {
+            margin-right: 0;
+            /* Remove margin */
+        }
+        
+        .navbar .navbar-nav .nav-link {
+            margin-right: 30px;
+            /* Adjust margin */
+            color: #ffffff;
+            /* Change font color */
+            font-family: 'Times New Roman', Times, serif;
+            /* Add font weight */
+        }
+        
+        .navbar .navbar-nav .nav-link:last-child {
+            margin-right: 10;
+            /* Remove margin for the last link */
+        }
+        
+        .navbar .navbar-nav .nav-item.donate {
+            margin-left: auto;
+            /* Push donate button to the right */
+        }
+        
+        .navbar .navbar-nav .nav-item.donate .nav-link {
+            background-color: #1414f7;
+            /* Change button background color */
+            color: #ffffff;
+            /* Change button font color */
+            padding: 7px 15px;
+            /* Adjust button padding */
+            border-radius: 5px;
+            /* Add border radius */
+            font-weight: bold;
+            /* Add font weight */
+        }
+        
+        .navbar .navbar-nav .nav-item.donate .nav-link:hover {
+            background-color: #c919a3;
+            /* Change button background color on hover */
+        }
+        
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        
+        card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-body {
+            padding: 20px;
+            color: black;
+            /* Set text color to black */
+        }
+        
+        .btn-donate {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        
+        #pay {
+            color: #055bb6;
+            font-weight: bold;
+        }
+        
+        #pal {
+            color: rgb(91, 178, 232);
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 250px !important;
+            background-color: #000000;
+            font-family: 'Times New Roman', Times, serif;
+            color: #fff;
+            padding: 80px 0;
+        }
+        
+        .container_footer {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        
+        .footer h2 {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul,
+        .additional-links ul,
+        .other-links ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-links ul li,
+        .additional-links ul li,
+        .other-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a,
+        .additional-links ul li a,
+        .other-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 3px;
+            font-size: 12px;
+        }
+        
+        .footer-links ul li a:hover,
+        .additional-links ul li a:hover,
+        .other-links ul li a:hover {
+            color: #ccc;
+        }
+        
+        .copyright {
+            text-align: center;
+        }
+        
+        .copyright p {
+            color: #fafafb;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <h1 style="color: rgba(251, 251, 110, 0.827); font-weight: bold; margin-right: 30px;"><span style="color: white">for</span>People</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">About Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">{% if 'user_id' not in session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item donate">
+                        <a class="nav-link" href="/donations">Donate</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container pay mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Donate to {{ event.name }}</h5>
+                        <p class="card-text">{{ event.description }}</p>
+                        <form action="/make_payment/{{event.id}}" method="POST">
+                            <input type="hidden" name="event_id" value="{{ event.id }}">
+                            <div class="form-group">
+                                <label for="amount">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" value="usd" name="currency">
+                            </div>
+                            <input type="hidden" name="payment_method" value="paypal">
+                            <button class="btn border border-1">
+                            <h3><span id="pay">Pay</span><span id="pal">Pal</span><span id="checkout" class="mx-3">Donate</span></h3>
+                        </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer ">
+        <div class="container_footer ">
+            <div class="footer-links ">
+                <h2>QUICK LINKS</h2>
+                <ul>
+                    <li><a href="# ">About Us</a></li>
+                    <li><a href="# ">Contact Us</a></li>
+                    <li><a href="# ">Our Partners</a></li>
+                    <li><a href="# ">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="additional-links ">
+                <h2>LEGALS</h2>
+                <ul>
+                    <li><a href="# ">Terms of Service</a></li>
+                    <li><a href="# ">Cookie Policy</a></li>
+                    <li><a href="# ">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="other-links ">
+                <h2>SUPPORT</h2>
+                <ul>
+                    <li><a href="# ">Blog</a></li>
+                    <li><a href="# ">Careers</a></li>
+                    <li><a href="# ">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright ">
+            <p>&copy; 2024 Your Company. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
