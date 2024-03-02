@@ -5,6 +5,8 @@ from flask_app.models.donation import Donation  # Import your Donation model
 from flask_app.models.user import User  # Import your Donation model
 from flask_app.models.event import Event  # Import your Donation model
 import paypalrestsdk
+
+
 @app.route('/donations')
 def donations():
     donations = Donation.get_all()  # Fetch all donations from the database
@@ -127,4 +129,4 @@ def donate():
     
 @app.route('/success/payment')
 def success_payment():
-    return render_template('succsesful.html')
+    return render_template('sukses.html')

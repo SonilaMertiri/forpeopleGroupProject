@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 
+
 class Donation:
     DB = "forpeopleschema"
     def __init__(self, data):

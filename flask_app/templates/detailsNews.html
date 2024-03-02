@@ -1,0 +1,104 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        #news-photo {
+            width: 100%;
+            height: 400px;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+        
+        #news-details {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        
+        #news-content-container {
+            flex-grow: 1;
+            margin-left: 20px;
+            max-width: 48.5%;
+            width: 100%;
+            z-index: 2;
+            position: absolute;
+            bottom: 10px;
+            background-color: aliceblue;
+            align-content: center;
+            padding: 10px 25px;
+        }
+        
+        #news-title {
+            font-size: 24px;
+            color: #0c079c;
+            margin-bottom: 30px;
+            align-items: center !important;
+        }
+        
+        #news-content {
+            font-size: 16px;
+            color: #000000;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .posted-by {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 10px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+
+<body>{% if 'user_id' in session and user['role'] == 'admin' %}
+    <div class="admin-buttons" style="margin-top: 20px;">
+        <a href="/news/edit/{{ news.id }}" style="display: inline-block; padding: 10px 20px; background-color: rgb(255, 100, 3); color: white; text-decoration: none; border-radius: 5px;">Edit Article <i class="ion-ios-arrow-forward"></i></a>
+        <a href="/news/delete/{{ news.id }}" style="display: inline-block; padding: 10px 20px; background-color: rgb(255, 108, 3); color: white; text-decoration: none; border-radius: 5px;">Delete Article <i class="ion-ios-arrow-forward "></i></a>
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <!-- News Photo -->
+        <img id="news-photo" src="{{ url_for('static', filename='newsimages/' + news.newsphoto) }}" alt="News Photo">
+
+        <!-- News Details -->
+        <div id="news-details">
+            <!-- News Title -->
+            <div id="news-content-container">
+                <h2 id="news-title">{{ news.title }}</h2>
+
+                <!-- Posted By -->
+                <p class="posted-by"><em>Posted by Klea</em></p>
+
+                <!-- News Content -->
+                <div class="news-content" id="news-content">{{ news.content }}</div>
+
+                <!-- Admin Buttons (only visible to admins) -->
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

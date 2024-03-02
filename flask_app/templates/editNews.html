@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        .abs {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        
+        .customform {
+            width: 100% !important;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black;">
+        <div class="container">
+            <h1 style="color: rgba(251, 251, 110, 0.827); font-weight: bold; margin-right: 30px;"><span style="color: white">for</span>People</h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">About Us</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">{% if 'user_id' not in session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item donate">
+                        <a class="nav-link" href="/donations">Donate</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <form action="/news/update/{{news.id}}" method="POST" class="w-50 m-auto mt-5 abs costumform" enctype="multipart/form-data">
+            <h1>EDIT YOUR ARTICLE </h1>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" id="title">
+            </div>
+            {% with messages = get_flashed_messages(category_filter=["titleNews"]) %} {% if messages %} {% for message in messages %}
+            <p class="text-danger text-center">{{ message }}</p>
+            {% endfor %} {% endif %} {% endwith %}
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea>
+            </div>
+            {% with messages = get_flashed_messages(category_filter=["contentNews"]) %} {% if messages %} {% for message in messages %}
+            <p class="text-danger text-center">{{ message }}</p>
+            {% endfor %} {% endif %} {% endwith %}
+            <div class="mb-3">
+                <label for="photo" class="form-label">Photo</label>
+                <input type="file" class="form-control" name="photo" id="photo">
+            </div>
+            <button type="submit" class="btn btn-primary">UPDATE ARTICLE</button>
+        </form>
+    </div>
+    <img src="{{ url_for('static', filename='images/planttrees.jpg') }}" alt="world" class="img-fluid" style="position: relative; z-index: -1; margin-bottom: 10px;">
+</body>
+
+</html>
